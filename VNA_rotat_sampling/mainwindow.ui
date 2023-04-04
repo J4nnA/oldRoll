@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>751</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>连接设备</string>
+    </property>
+    <widget class="QLineEdit" name="leDeviceId">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>40</y>
+       <width>271</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnConnect">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>40</y>
+       <width>92</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>连接</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>69</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>设备ip</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnDisconnect">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>40</y>
+       <width>92</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>断开</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>330</y>
+      <width>751</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>返回信息</string>
+    </property>
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>731</width>
+       <height>191</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>751</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>测量模式切换</string>
+    </property>
+    <widget class="QPushButton" name="btnVnaModeSwitch">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>92</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>VNA</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>190</y>
+      <width>741</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>频率设置</string>
+    </property>
+    <widget class="QLineEdit" name="leStartFreq">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>40</y>
+       <width>141</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>69</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>起始频率</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>90</y>
+       <width>69</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>终止频率</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="leStopFreq">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>90</y>
+       <width>141</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="cbStartFreqUnit">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>40</y>
+       <width>89</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Hz</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_2">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>90</y>
+       <width>89</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Hz</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="btnSetStartFreq">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>40</y>
+       <width>92</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>设置</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnQueryStopFreq">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>90</y>
+       <width>92</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>查询</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnQueryStartFreq">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>40</y>
+       <width>92</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>查询</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnSetStopFreq">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>90</y>
+       <width>92</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>设置</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
