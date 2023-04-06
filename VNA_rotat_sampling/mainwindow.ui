@@ -26,7 +26,7 @@
     <property name="title">
      <string>连接设备</string>
     </property>
-    <widget class="QLineEdit" name="leDeviceId">
+    <widget class="QLineEdit" name="leDeviceIp">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -273,7 +273,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

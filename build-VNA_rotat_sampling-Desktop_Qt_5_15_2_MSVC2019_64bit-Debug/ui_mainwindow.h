@@ -29,7 +29,7 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QGroupBox *groupBox;
-    QLineEdit *leDeviceId;
+    QLineEdit *leDeviceIp;
     QPushButton *btnConnect;
     QLabel *label;
     QPushButton *btnDisconnect;
@@ -61,9 +61,9 @@ public:
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(20, 10, 751, 80));
-        leDeviceId = new QLineEdit(groupBox);
-        leDeviceId->setObjectName(QString::fromUtf8("leDeviceId"));
-        leDeviceId->setGeometry(QRect(110, 40, 271, 27));
+        leDeviceIp = new QLineEdit(groupBox);
+        leDeviceIp->setObjectName(QString::fromUtf8("leDeviceIp"));
+        leDeviceIp->setGeometry(QRect(110, 40, 271, 27));
         btnConnect = new QPushButton(groupBox);
         btnConnect->setObjectName(QString::fromUtf8("btnConnect"));
         btnConnect->setGeometry(QRect(450, 40, 92, 29));
@@ -123,7 +123,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 25));
+        menubar->setGeometry(QRect(0, 0, 800, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
