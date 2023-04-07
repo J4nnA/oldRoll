@@ -17,5 +17,5 @@ qint32 Service::startService(QString ip)
     // 建立连接
     resp = acs.deviceConnect(rsc);
 
-    return 0;
+    return resp;
 }

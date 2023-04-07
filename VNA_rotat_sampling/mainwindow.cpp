@@ -27,9 +27,12 @@ void MainWindow::on_btnConnect_clicked()
     QString str = "TCPIP0::" + ui->leDeviceIp->text() + "::5000::SOCKET";
 
     // 调用下层功能，等待返回状态
+    qint32 ret;
+    Service service;
+    ret = service.startService(str);
 
     //根据返回状态，进行不同操作_目前只是打印
-    printToBrowser(str);
+    printToBrowser(QString::number(ret));
 
 }
 
