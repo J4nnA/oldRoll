@@ -28,7 +28,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 #添加visa库
-LIBS += -L$$PWD/./ -lvisa64
+win32: LIBS += -L$$PWD/./ -lvisa64
 
 INCLUDEPATH += $$PWD/.
 DEPENDPATH += $$PWD/.

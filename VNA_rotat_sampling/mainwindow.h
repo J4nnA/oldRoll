@@ -22,7 +22,14 @@ public:
 private slots:
     void on_btnConnect_clicked();
 
+    void on_btnSetStartFreq_clicked();
+
+    void on_btnQueryStartFreq_clicked();
+
+    void on_btnCore_clicked();
+
 private:
     Ui::MainWindow *ui;
+    Service m_service;
 };
 #endif // MAINWINDOW_H

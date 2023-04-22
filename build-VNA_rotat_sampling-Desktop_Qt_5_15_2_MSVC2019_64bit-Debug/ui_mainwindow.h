@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -38,16 +39,17 @@ public:
     QGroupBox *groupBox_3;
     QPushButton *btnVnaModeSwitch;
     QGroupBox *groupBox_4;
-    QLineEdit *leStartFreq;
     QLabel *label_2;
     QLabel *label_3;
-    QLineEdit *leStopFreq;
     QComboBox *cbStartFreqUnit;
-    QComboBox *comboBox_2;
     QPushButton *btnSetStartFreq;
     QPushButton *btnQueryStopFreq;
     QPushButton *btnQueryStartFreq;
     QPushButton *btnSetStopFreq;
+    QDoubleSpinBox *dsbStartFreq;
+    QDoubleSpinBox *dsbStopFreq;
+    QComboBox *cbStopFreqUnit;
+    QPushButton *btnCore;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -55,7 +57,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(780, 647);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         groupBox = new QGroupBox(centralwidget);
@@ -75,10 +77,10 @@ public:
         btnDisconnect->setGeometry(QRect(590, 40, 92, 29));
         groupBox_2 = new QGroupBox(centralwidget);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(20, 330, 751, 231));
+        groupBox_2->setGeometry(QRect(20, 380, 751, 221));
         textBrowser = new QTextBrowser(groupBox_2);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        textBrowser->setGeometry(QRect(10, 30, 731, 191));
+        textBrowser->setGeometry(QRect(10, 30, 731, 181));
         groupBox_3 = new QGroupBox(centralwidget);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         groupBox_3->setGeometry(QRect(20, 100, 751, 81));
@@ -88,26 +90,19 @@ public:
         groupBox_4 = new QGroupBox(centralwidget);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
         groupBox_4->setGeometry(QRect(20, 190, 741, 131));
-        leStartFreq = new QLineEdit(groupBox_4);
-        leStartFreq->setObjectName(QString::fromUtf8("leStartFreq"));
-        leStartFreq->setGeometry(QRect(90, 40, 141, 27));
         label_2 = new QLabel(groupBox_4);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(20, 40, 69, 20));
         label_3 = new QLabel(groupBox_4);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(20, 90, 69, 20));
-        leStopFreq = new QLineEdit(groupBox_4);
-        leStopFreq->setObjectName(QString::fromUtf8("leStopFreq"));
-        leStopFreq->setGeometry(QRect(90, 90, 141, 27));
         cbStartFreqUnit = new QComboBox(groupBox_4);
+        cbStartFreqUnit->addItem(QString());
+        cbStartFreqUnit->addItem(QString());
+        cbStartFreqUnit->addItem(QString());
         cbStartFreqUnit->addItem(QString());
         cbStartFreqUnit->setObjectName(QString::fromUtf8("cbStartFreqUnit"));
         cbStartFreqUnit->setGeometry(QRect(250, 40, 89, 28));
-        comboBox_2 = new QComboBox(groupBox_4);
-        comboBox_2->addItem(QString());
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-        comboBox_2->setGeometry(QRect(250, 90, 89, 28));
         btnSetStartFreq = new QPushButton(groupBox_4);
         btnSetStartFreq->setObjectName(QString::fromUtf8("btnSetStartFreq"));
         btnSetStartFreq->setGeometry(QRect(380, 40, 92, 29));
@@ -120,10 +115,26 @@ public:
         btnSetStopFreq = new QPushButton(groupBox_4);
         btnSetStopFreq->setObjectName(QString::fromUtf8("btnSetStopFreq"));
         btnSetStopFreq->setGeometry(QRect(380, 90, 92, 29));
+        dsbStartFreq = new QDoubleSpinBox(groupBox_4);
+        dsbStartFreq->setObjectName(QString::fromUtf8("dsbStartFreq"));
+        dsbStartFreq->setGeometry(QRect(110, 40, 121, 28));
+        dsbStopFreq = new QDoubleSpinBox(groupBox_4);
+        dsbStopFreq->setObjectName(QString::fromUtf8("dsbStopFreq"));
+        dsbStopFreq->setGeometry(QRect(110, 90, 121, 28));
+        cbStopFreqUnit = new QComboBox(groupBox_4);
+        cbStopFreqUnit->addItem(QString());
+        cbStopFreqUnit->addItem(QString());
+        cbStopFreqUnit->addItem(QString());
+        cbStopFreqUnit->addItem(QString());
+        cbStopFreqUnit->setObjectName(QString::fromUtf8("cbStopFreqUnit"));
+        cbStopFreqUnit->setGeometry(QRect(250, 90, 89, 28));
+        btnCore = new QPushButton(centralwidget);
+        btnCore->setObjectName(QString::fromUtf8("btnCore"));
+        btnCore->setGeometry(QRect(650, 340, 92, 29));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 21));
+        menubar->setGeometry(QRect(0, 0, 780, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -148,13 +159,20 @@ public:
         label_2->setText(QCoreApplication::translate("MainWindow", "\350\265\267\345\247\213\351\242\221\347\216\207", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "\347\273\210\346\255\242\351\242\221\347\216\207", nullptr));
         cbStartFreqUnit->setItemText(0, QCoreApplication::translate("MainWindow", "Hz", nullptr));
-
-        comboBox_2->setItemText(0, QCoreApplication::translate("MainWindow", "Hz", nullptr));
+        cbStartFreqUnit->setItemText(1, QCoreApplication::translate("MainWindow", "kHz", nullptr));
+        cbStartFreqUnit->setItemText(2, QCoreApplication::translate("MainWindow", "MHz", nullptr));
+        cbStartFreqUnit->setItemText(3, QCoreApplication::translate("MainWindow", "GHz", nullptr));
 
         btnSetStartFreq->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
         btnQueryStopFreq->setText(QCoreApplication::translate("MainWindow", "\346\237\245\350\257\242", nullptr));
         btnQueryStartFreq->setText(QCoreApplication::translate("MainWindow", "\346\237\245\350\257\242", nullptr));
         btnSetStopFreq->setText(QCoreApplication::translate("MainWindow", "\350\256\276\347\275\256", nullptr));
+        cbStopFreqUnit->setItemText(0, QCoreApplication::translate("MainWindow", "Hz", nullptr));
+        cbStopFreqUnit->setItemText(1, QCoreApplication::translate("MainWindow", "kHz", nullptr));
+        cbStopFreqUnit->setItemText(2, QCoreApplication::translate("MainWindow", "MHz", nullptr));
+        cbStopFreqUnit->setItemText(3, QCoreApplication::translate("MainWindow", "GHz", nullptr));
+
+        btnCore->setText(QCoreApplication::translate("MainWindow", "\350\256\260\345\275\225", nullptr));
     } // retranslateUi
 
 };

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>780</width>
+    <height>647</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -80,9 +80,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>330</y>
+      <y>380</y>
       <width>751</width>
-      <height>231</height>
+      <height>221</height>
      </rect>
     </property>
     <property name="title">
@@ -94,7 +94,7 @@
        <x>10</x>
        <y>30</y>
        <width>731</width>
-       <height>191</height>
+       <height>181</height>
       </rect>
      </property>
     </widget>
@@ -137,16 +137,6 @@
     <property name="title">
      <string>频率设置</string>
     </property>
-    <widget class="QLineEdit" name="leStartFreq">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>40</y>
-       <width>141</width>
-       <height>27</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
@@ -173,16 +163,6 @@
       <string>终止频率</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="leStopFreq">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>90</y>
-       <width>141</width>
-       <height>27</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QComboBox" name="cbStartFreqUnit">
      <property name="geometry">
       <rect>
@@ -197,19 +177,19 @@
        <string>Hz</string>
       </property>
      </item>
-    </widget>
-    <widget class="QComboBox" name="comboBox_2">
-     <property name="geometry">
-      <rect>
-       <x>250</x>
-       <y>90</y>
-       <width>89</width>
-       <height>28</height>
-      </rect>
-     </property>
      <item>
       <property name="text">
-       <string>Hz</string>
+       <string>kHz</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>MHz</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>GHz</string>
       </property>
      </item>
     </widget>
@@ -265,6 +245,69 @@
       <string>设置</string>
      </property>
     </widget>
+    <widget class="QDoubleSpinBox" name="dsbStartFreq">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>40</y>
+       <width>121</width>
+       <height>28</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="dsbStopFreq">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>90</y>
+       <width>121</width>
+       <height>28</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="cbStopFreqUnit">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>90</y>
+       <width>89</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Hz</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>kHz</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>MHz</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>GHz</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="btnCore">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>340</y>
+      <width>92</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>记录</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -272,7 +315,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>780</width>
      <height>21</height>
     </rect>
    </property>

@@ -19,7 +19,10 @@ void MainWindow::printToBrowser(QString retStr)
     ui->textBrowser->append(retStr);
 }
 
-
+/**
+ * @brief MainWindow::on_btnConnect_clicked
+ * 已实现
+ */
 void MainWindow::on_btnConnect_clicked()
 {
 
@@ -28,11 +31,48 @@ void MainWindow::on_btnConnect_clicked()
 
     // 调用下层功能，等待返回状态
     qint32 ret;
-    Service service;
-    ret = service.startService(str);
+
+    ret = m_service.startService(str);
 
     //根据返回状态，进行不同操作_目前只是打印
-    printToBrowser(QString::number(ret));
+    printToBrowser("connect status : " + QString::number(ret));
+
+}
+
+
+/**
+ * @brief MainWindow::on_btnSetStartFreq_clicked
+ * 已实现
+ */
+void MainWindow::on_btnSetStartFreq_clicked()
+{
+    // 数值计算
+    double value = ui->dsbStartFreq->value();
+    int index = ui->cbStartFreqUnit->currentIndex();
+    value = value * pow(10.0, index * 3);
+
+    // 以计算的数值设置起始频率
+    int ret = m_service.setStartFreq(value);
+
+    // 将返回信息打印
+    printToBrowser("set start frequence : " + QString::number(ret));
+}
+
+/**
+ * @brief MainWindow::on_btnQueryStartFreq_clicked
+ *
+ */
+void MainWindow::on_btnQueryStartFreq_clicked()
+{
+
+    QString retStr = m_service.queryStartFreq();
+    // 将返回信息打印
+    printToBrowser("query start frequence : " + retStr);
+}
+
+
+void MainWindow::on_btnCore_clicked()
+{
 
 }
 
