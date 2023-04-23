@@ -32,7 +32,8 @@ void MainWindow::on_btnConnect_clicked()
     // 调用下层功能，等待返回状态
     qint32 ret;
 
-    ret = m_service.startService(str);
+    //ret = m_service.startService(str);
+    ret = m_server.connectDevice(str);
 
     //根据返回状态，进行不同操作_目前只是打印
     printToBrowser("connect status : " + QString::number(ret));
@@ -65,7 +66,8 @@ void MainWindow::on_btnSetStartFreq_clicked()
 void MainWindow::on_btnQueryStartFreq_clicked()
 {
 
-    QString retStr = m_service.queryStartFreq();
+    //QString retStr = m_service.qusadsdadadayStartFreq();
+    QString retStr = m_server.queryStartFreq();
     // 将返回信息打印
     printToBrowser("query start frequence : " + retStr);
 }

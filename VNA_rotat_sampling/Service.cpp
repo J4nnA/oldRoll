@@ -31,6 +31,8 @@ qint32 Service::setStartFreq(double startFreq)
     return m_access.startFreqSet(strStartFreq);
 }
 
+
+
 QString Service::queryStartFreq()
 {
     // 将下层返回数据进行处理
@@ -43,4 +45,30 @@ QString Service::queryStartFreq()
     QString strRet;
     strRet.sprintf("%.0f", result);
     return strRet;
+}
+
+Server::Server()
+{
+
+}
+
+qint32 Server::connectDevice(QString ip)
+{
+    // 转换指令格式
+    QByteArray tempIp = ip.toLocal8Bit();
+    ViRsrc resource = tempIp.data();
+    m_device.deviceInit(resource);
+
+    return 0;
+}
+
+QString Server::queryStartFreq()
+{
+    QString str;
+    ViReal64 value = 0;
+    m_device.queryStartSend(value);
+
+    str.sprintf("%.0f",value);
+
+    return str;
 }

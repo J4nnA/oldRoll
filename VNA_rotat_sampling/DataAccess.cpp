@@ -4,6 +4,7 @@ ViRsrc Access::resource;
 ViSession Access::analyzer;
 ViSession Access::defaultRM;
 SCPI_DATA_FMT Access::queryDataFmt;
+SCPI_DATA_FMT Device::queryDataFmt;
 
 /**
  * @brief Access::deviceInit
@@ -215,4 +216,119 @@ ViStatus Access::queryCmdSend(ViSession analyzer, QString cmd, ViChar wrtBuf[BUF
     if(status == VI_SUCCESS)qDebug() << "DataAccess.cpp_Access::queryCmdSend  revQuery success.";
     else qDebug() << "DataAccess.cpp_Access::queryCmdSend  revQuery error.";
     return status;
+}
+
+Device::Device()
+{
+    // 对成员变量进行初始化
+    this->queryDataFmt = SCPI_DATA_FMT::s_datafmt_HEX;
+    ViSession status = viOpenDefaultRM(&m_defaultRM);
+}
+
+ViStatus Device::deviceInit(ViRsrc deviceIp)
+{
+    ViStatus status;
+
+    status = viOpen(m_defaultRM, deviceIp, VI_NULL, VI_NULL, &m_device);
+    if(status == 0)
+    {
+        qDebug() << "viOpen success.";
+    }
+    viSetAttribute(m_device, VI_ATTR_TMO_VALUE, 2000);
+    viSetAttribute(m_device, VI_ATTR_SEND_END_EN, VI_TRUE);
+    viSetAttribute(m_device, VI_ATTR_SUPPRESS_END_EN, VI_FALSE);
+    viSetAttribute(m_device, VI_ATTR_TERMCHAR_EN, VI_FALSE);
+
+    // 修改数据格式？
+    Device::queryDataFmt = SCPI_DATA_FMT::s_datafmt_ASC;
+    // 设置仪器？如何实现
+    status = setQueryResultDataFormat(Device::queryDataFmt);
+    if(status == 0)
+    {
+        qDebug() << "setQueryResultDataFormat success.";
+    }
+    return status;
+}
+
+ViStatus Device::queryStartSend(ViReal64 &valHz)
+{
+    QString operateStr = ":SENS:FREQ:STAR";
+    ViChar wrtBuf[BUFFER_SIZE];
+    ViStatus status = queryCmd(m_device, operateStr, wrtBuf);
+
+    if(Device::queryDataFmt == SCPI_DATA_FMT::s_datafmt_HEX)
+    {
+        memcpy(&valHz,wrtBuf,sizeof(ViReal64));
+    }
+    else
+    {
+        QString strResult = wrtBuf;
+        valHz = strResult.toDouble();
+    }
+    return status;
+}
+
+ViStatus Device::setCmd(ViSession device, QString operateStr, QString dataStr)
+{
+    ViStatus status;
+    ViUInt32 retCnt;
+    ViChar wrtBuff[BUFFER_SIZE];
+    QString cmd;
+    // 组合指令（未加校验版）
+    cmd = operateStr + " " + dataStr;
+
+    // 转换指令格式
+    QByteArray tempArray = cmd.toLocal8Bit();
+
+    // 写入缓冲区
+    std::memcpy(wrtBuff, tempArray, BUFFER_SIZE);
+
+    // 发送指令
+    status = viWrite(m_device, ViBuf(wrtBuff), BUFFER_SIZE, &retCnt);
+    return status;
+}
+
+ViStatus Device::queryCmd(ViSession device, QString operateStr, ViChar wrtBuf[])
+{
+    ViStatus status;
+    ViUInt32 retCnt;
+
+    QString cmd = operateStr + "?";
+
+    // 转换指令格式
+    QByteArray tempArray = cmd.toLocal8Bit();
+
+    // 写入缓冲区
+    std::memcpy(wrtBuf, tempArray, BUFFER_SIZE);
+
+    // 发送指令
+    status = viWrite(m_device, (ViBuf)wrtBuf, BUFFER_SENDSIZE, &retCnt);
+    QThread::msleep(50);
+    memset(wrtBuf, 0, BUFFER_SIZE);
+    status = viRead (m_device,(ViBuf)wrtBuf ,BUFFER_SIZE , &retCnt);
+
+    return status;
+}
+
+ViStatus Device::setQueryResultDataFormat(SCPI_DATA_FMT nVal)
+{
+    ViChar pChar[]    = ":FORM";
+    ViChar pVal_ASC[] = "ASC";
+    ViChar pVal_HEX[] = "HEX";
+    ViChar* pVal = nullptr;
+    switch (nVal)
+    {
+    case SCPI_DATA_FMT::s_datafmt_ASC:
+        pVal = pVal_ASC;
+        break;
+    case SCPI_DATA_FMT::s_datafmt_HEX:
+        pVal = pVal_HEX;
+        break;
+    }
+    ViStatus result = setCmd(m_device,pChar,pVal);
+    if(VI_SUCCESS == result)
+    {
+        Device::queryDataFmt = nVal;
+    }
+    return result;
 }

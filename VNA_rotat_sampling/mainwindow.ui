@@ -35,6 +35,9 @@
        <height>27</height>
       </rect>
      </property>
+     <property name="text">
+      <string>169.254.227.100</string>
+     </property>
     </widget>
     <widget class="QPushButton" name="btnConnect">
      <property name="geometry">
@@ -316,7 +319,7 @@
      <x>0</x>
      <y>0</y>
      <width>780</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

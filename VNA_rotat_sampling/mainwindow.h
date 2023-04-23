@@ -31,5 +31,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Service m_service;
+    Server m_server;
 };
 #endif // MAINWINDOW_H

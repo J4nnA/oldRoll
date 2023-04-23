@@ -31,7 +31,7 @@ class Server
 {
 public:
     Server();
-    ~Server();
+
 
     // 连接设备(传递字符串）
     qint32 connectDevice(QString ip);

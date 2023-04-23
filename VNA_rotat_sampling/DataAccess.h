@@ -64,10 +64,10 @@ class Device
 {
 public:
     Device();
-    ~Device();
+
 
     // 设备连接与初始化
-    ViStatus deviceInit();
+    ViStatus deviceInit(ViRsrc deviceIp);
 
     // 查询起始频率
     ViStatus queryStartSend(ViReal64 &valHz);   //参数为返回值（字符串）
@@ -77,15 +77,16 @@ private:
     ViStatus setCmd(ViSession device, QString operateStr, QString dataStr); //设备，操作码，数据码
     // 查询设置指令
     ViStatus queryCmd(ViSession device, QString operateStr, ViChar wrtBuf[BUFFER_SIZE]);  //无操作码，多了个装返回值的字符数组
-
+    // 设置数据返回格式
+    ViStatus setQueryResultDataFormat(SCPI_DATA_FMT nVal);
 public:
 
     ViSession m_device;                 // 设备会话
     ViSession m_defaultRM;              // 默认资源管理器会话
 
-private:
     const static int TIMEOUT = 10000;
     static SCPI_DATA_FMT queryDataFmt;
+
 };
 
 #endif // DATAACCESS_H
